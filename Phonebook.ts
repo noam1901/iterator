@@ -16,27 +16,25 @@ class Phonebook implements IPhonebook{
                 break
             }
         }
-    } // add new phone to existing contact
-    getContactByID(id:number):Contact|undefined {
-        return // get contact by id else not exsit undefined
-    }// get contact by id
-    getContactByName(name:string):Contact[]|undefined{
-        const allWithThisName = []
+    }
+    get(id:number):Contact|undefined //return contacts by id
+    get(name:string):Contact[]|undefined; //return contacts by name
+    get(arg:number | string):Contact | Contact[] | undefined { //return contacts by name/id
+        if(typeof arg === 'number') return this.collection.find(contact => contact.id === arg)
+        const contacts = []
         for(let i of this.collection){
-            if(i.name === name){
-                allWithThisName.push(i)
+            if(i.name === arg){
+                contacts.push(i)
             }
         }
-        return allWithThisName !== []?allWithThisName:undefined// array of concats by name
-    } // get contacts by name
+        return contacts
+    }// get contacts by name
     remove(id:number):Contact|undefined {
         let deletedContact
         for(let i of this.collection){
             if(i.id === id){
                 deletedContact = i
-                console.log(this.collection);  
-                this.collection.splice(this.collection.indexOf(i),1)
-                console.log(this.collection);  
+                this.collection.splice(this.collection.indexOf(i),1) 
                 break  
             }
         }

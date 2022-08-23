@@ -17,7 +17,7 @@ phonebook.add(new Contact(12,'eliyau', 'vedadry rahok', ['09-4332321245433']))
 phonebook.add(new Contact(13,'Shoval', 'Ben-Gurion 14, Netanya', ['09-5543433']))
 console.log(phonebook.size);
 phonebook.addPhone(1,'052538321')
-const names = phonebook.getContactByName('Shahar')
+const names = phonebook.get('Shahar')
 if (names){
     let phoneNumber = '055555'
     for(let contact of names){
