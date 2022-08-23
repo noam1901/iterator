@@ -1,7 +1,7 @@
 import { IPhonebook } from "./IPhonebook";
 import { Contact } from './Contact'
 class Phonebook implements IPhonebook{
-    constructor(private collection:Array<Contact>=[]){}
+    constructor(private collection:Array<Contact>=[], private _index = 0){}
     get size():number {
         return this.collection.length
     }
@@ -40,6 +40,23 @@ class Phonebook implements IPhonebook{
         }
         return deletedContact// contact delete or undefined
     }// remove contact by id and returns it
+    [Symbol.iterator]() {
+        return this
+      }
+
+    next() {
+        if(this._index === this.size){
+            return{
+                done: true
+            }
+        }
+        return {
+            value: this.collection[this._index++],
+            done: false
+        }
+        
+        
+    } 
 }
 
 export function createPhonebook():IPhonebook{

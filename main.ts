@@ -27,3 +27,12 @@ if (names){
 names? phonebook.remove(names[names.length-1].id): console.log('no delete can be');
 console.log(phonebook.size);
 
+
+for(const contact of phonebook){
+    console.log(contact);    
+}
+
+
+
+
+
