@@ -57,6 +57,26 @@ class Phonebook implements IPhonebook{
         
         
     } 
+    nameContains(name:string):any{
+        const collect = this.collection.filter(contact=>contact.name.includes(name))
+        return {
+            collection:  collect,
+            size: collect.length,
+            _index:0,
+            [Symbol.iterator](){
+                return this
+            },
+            next(){
+                if(this._index === this.size){
+                    return{
+                        done: true
+                    }
+                }
+                return{ value: this.collection[this._index++],
+                done:false} 
+            }
+        }
+    }
 }
 
 export function createPhonebook():IPhonebook{

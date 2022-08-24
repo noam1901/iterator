@@ -31,6 +31,9 @@ console.log(phonebook.size);
 for(const contact of phonebook){
     console.log(contact);    
 }
+for(const contact of phonebook.nameContains('Sh')){
+    console.log(contact)
+}
 
 
 
